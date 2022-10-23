@@ -19,7 +19,7 @@ Jika Sudah Di Pahami Aturannya, Silahkan Ketik *.menu* Untuk Memulai!
 ──「 YUDHA BOT 」──`
 let wibu = `https://i.ibb.co/P5BBzbf/286637238-392674839545088-948545114162206238-n.jpg` 
 let thumb = await(await fetch(wibu)).buffer()
-conn.sendMessage(m.chat, str, wm, m) 
+conn.sendMessage(m.chat, str, m, { mentionedJid: [m.sender] })
           }
 handler.help = ['rules']
 handler.tags = ['aturan']
