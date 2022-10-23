@@ -20,7 +20,7 @@ let wibu = `https://api-reysekha.herokuapp.com/api/wallpaper/islami?apikey=APIKE
 let thumb = await(await fetch(wibu)).buffer()
 conn.send2ButtonLoc(m.chat, await conn.resize('https://api-reysekha.herokuapp.com/api/wallpaper/islami?apikey=APIKEY', 300, 300), str, isi, 'MENU BOT', '.listmenu', 'ATURAN BOT', '.aturan', m)
 
-
+}
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
 handler.command = /^(menu|help|\?)$/i
