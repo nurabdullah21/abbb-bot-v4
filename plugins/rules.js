@@ -3,30 +3,23 @@ let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
 //let handler = async(m, { conn, text, usedPrefix, command }) => {
 //let pp = await conn.profilePictureUrl(nomorown + '@s.whatsapp.net', 'image')
 
-let str = `${global.wm}
+let str = `──「 ATURAN 」──
 
-┌─「 Donasi • Pulsa 」
-│ • *Telkomsel:* [${global.ppulsa}]
-❏────
+1. Jangan SPAM Bot.
+Sanksi : *WARN/SOFT BLOCK*
 
-┌─「 Donasi • Non Pulsa 」
-│ • *Dana:* [${global.pdana}]
-│ • *Gopay:* [${global.pgopay}]
-│ • *Ovo:* [${global.povo}]
-│ • *Link Aja:* [${global.plinkaja}]
-❏────`
+2. Jangan Call/Video Call Bot.
+Sanksi : *SOFT BLOCK*
+
+3. Jangan Mengeksploitasi Bot.
+Sanksi : *PERMANENT BLOCK*
+
+Jika Sudah Di Pahami Aturannya, Silahkan Ketik *.menu* Untuk Memulai!
+
+──「 YUDHA BOT 」──`
 let wibu = `https://i.ibb.co/P5BBzbf/286637238-392674839545088-948545114162206238-n.jpg` 
 let thumb = await(await fetch(wibu)).buffer()
-conn.sendButtonDoc(m.chat, str, wm,'Sewa Bot','.sewa', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
-    mediaUrl: "https://Instagram.com/_ctzhid",
-    mediaType: "VIDEO",
-    description: "https://www.instagram.com/p/CevoCg5hG-p/?utm_source=ig_web_copy_link", 
-    title: 'WH-MODS-DEV-V1 MultiDevice',
-    body: wm,
-    thumbnail: thumb,
-    sourceUrl: sig
-  }
-  } }) 
+conn.sendMessage(m.chat, str, wm, m) 
           }
 handler.help = ['rules']
 handler.tags = ['aturan']
