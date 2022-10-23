@@ -17,7 +17,7 @@ let str = `${global.wm}
 ❏────`
 let wibu = `https://i.ibb.co/P5BBzbf/286637238-392674839545088-948545114162206238-n.jpg` 
 let thumb = await(await fetch(wibu)).buffer()
-conn.sendButtonLoc(m.chat, str, wm,'Sewa Bot','.sewa', m) 
+conn.send2ButtonLoc(m.chat, await conn.resize('https://api-reysekha.herokuapp.com/api/wallpaper/islami?apikey=APIKEY', 300, 300), str, isi, 'MENU BOT', '.command', 'ATURAN BOT', '.aturan', m)
           }
 handler.help = ['donasi']
 handler.tags = ['info']
