@@ -257,16 +257,12 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 ]
 
 let usrs = db.data.users[m.sender]
-let tek = `_Hai kak @${m.sender.split`@`[0]}_
-
-_${ucapan()}_
-
-_"Aku adalah Yudha BOT, BOT Whatsapp yang akan membantu kamu untuk mempersulit sesuatu, seperti membuat Sticker dan yang lainnya.."_
-
-_"Ada butuh info dariku??...."_`
+let tek = `${ucapan()}
+Hai Kak @${m.sender.split`@`[0]}
+Pilih Menu YUDHA BOT Disini`
 const listMessage = {
   text: tek,
-  footer: ``,
+  footer: `Jangan Lupa Donasi Ya Kak`,
   mentions: await conn.parseMention(tek),
   title: ``,
 	wm,
