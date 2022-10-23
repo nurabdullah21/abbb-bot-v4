@@ -23,6 +23,6 @@ conn.sendMessage(m.chat, str, wm, m)
           }
 handler.help = ['rules']
 handler.tags = ['aturan']
-handler.command = /^(rules)$/i
+handler.command = /^(rules|aturan)/i
 
 export default handler
