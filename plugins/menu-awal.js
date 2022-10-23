@@ -12,7 +12,7 @@ Saya YUDHA BOT, Bot Whatsapp Yang Menyusahkan Kamu Untuk Mempersulit Sesuatu Sep
 let isi =`Note : Perlakukan Bot Secara Baik dan Bijak. Bot ini terdapat Anti Spam yang berupa cooldown command selama *5 Detik* Setiap kali pemakaian.`
 let wibu = `https://api-reysekha.herokuapp.com/api/wallpaper/islami?apikey=APIKEY` 
 let thumb = await(await fetch(wibu)).buffer()
-conn.send2ButtonLoc(m.chat, await conn.resize('https://api-reysekha.herokuapp.com/api/wallpaper/islami?apikey=APIKEY', 300, 300), str, isi, 'MENU BOT', '.command', 'ATURAN BOT', '.aturan', m)
+conn.send2ButtonLoc(m.chat, await conn.resize('https://api-reysekha.herokuapp.com/api/wallpaper/islami?apikey=APIKEY', 300, 300), str, isi, 'MENU BOT', '.listmenu', 'ATURAN BOT', '.aturan', m)
           }
 handler.help = ['menu']
 handler.tags = ['main']
