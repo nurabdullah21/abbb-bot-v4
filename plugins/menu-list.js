@@ -260,7 +260,18 @@ let usrs = db.data.users[m.sender]
 let tek = `${ucapan()}
 Hai Kak @${m.sender.split`@`[0]}
 Pilih Menu YUDHA BOT Disini`
+
 const listMessage = {
+  text: tek,
+  footer: ``,
+  mentions: await conn.parseMention(tek),
+  title: ``,
+	wm,
+  buttonText: `PILIH DISINI ⎙`, 
+  sections
+}
+
+const listMessage2 = {
   text: tek,
   footer: ``,
   mentions: await conn.parseMention(tek),
@@ -271,7 +282,7 @@ const listMessage = {
 }
   if (teks == '404') {
   	return conn.sendMessage(m.chat, listMessage, { quoted: m, mentions: await conn.parseMention(tek), contextInfo:{ forwardingScore: 99999, isForwarded: true }})
-    await conn.sendMessage(m.chat, listMessage, { quoted: m, mentions: await conn.parseMention(tek), contextInfo:{ forwardingScore: 99999, isForwarded: true }})}
+    await conn.sendMessage(m.chat, listMessage2, { quoted: m, mentions: await conn.parseMention(tek), contextInfo:{ forwardingScore: 99999, isForwarded: true }})}
   	
  /**************************** TIME *********************/
  let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
