@@ -262,7 +262,7 @@ Hai Kak @${m.sender.split`@`[0]}
 Pilih Menu YUDHA BOT Disini`
 const listMessage = {
   text: tek,
-  footer: `Jangan Lupa Donasi Ya Kak`,
+  footer: ``,
   mentions: await conn.parseMention(tek),
   title: ``,
 	wm,
@@ -349,13 +349,6 @@ const listMessage = {
         if (plugin.tags && plugin.tags.includes(tag))
           if (plugin.help) groups[tag].push(plugin)
           }
-	  
-	  // PP KONTAKNYA MEUREUNAN
-	  
-	 let pp = await conn.profilePictureUrl(m.chat).catch(_ => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
-let koniciwa = await (await fetch(pp)).buffer()
-
-
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || defaultMenu.before
     let header = conn.menu.header || defaultMenu.header
@@ -591,12 +584,9 @@ function _0x1766() {
         //await conn.sendMessage(m.chat, message, m, { mentionedJid: [m.sender] })
         
     //------------------- BUTTON VID
-   /* conn.sendButtonLoc(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
-    ['SEWA', '.speed']
-]*/
-
-conn.sendButtonLoc(m.chat, pp, text, wm, 'SEWA', '.sewa', 0, { gifPlayback: true, contextInfo: { externalAdReply: {title: namabot, body: date, sourceUrl: linkyt, thumbnail: fs.readFileSync('./thumbnail.jpg') }}})
-  }
+    conn.sendButton(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
+    ['SEWA', '.sewa']
+]
 		   )
 	  
   } catch (e) {
@@ -641,16 +631,16 @@ function ucapan() {
   const time = moment.tz('Asia/Jakarta').format('HH')
   let res = "Sudah Dini Hari Kok Belum Tidur Kak? 🥱"
   if (time >= 4) {
-    res = "Selamat Pagi 🌄"
+    res = "Pagi Lord 🌄"
   }
   if (time >= 10) {
-    res = "Selamat Siang ☀️"
+    res = "Selamat Siang Kak ☀️"
   }
   if (time >= 15) {
-    res = "Selamat Sore  🌇"
+    res = "Selamat Sore Kak 🌇"
   }
   if (time >= 18) {
-    res = "Selamat Malam 🌙"
+    res = "Malam Kak 🌙"
   }
   return res
 }
