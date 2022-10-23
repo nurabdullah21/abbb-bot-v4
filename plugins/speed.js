@@ -51,7 +51,7 @@ let handler = async (m, { conn, isRowner}) => {
   let neww = performance.now()
   let speed = neww - old
   let txt = `_*SPEED TEST*_
-  Merespon Dalam 0.00${speed}milidetik`
+  Merespon Dalam ${speed}ms`
   /*await conn.sendHydrated(m.chat,`
 ${htjava} *P I N G*
 ${speed}ms
