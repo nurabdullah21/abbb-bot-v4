@@ -349,6 +349,13 @@ const listMessage = {
         if (plugin.tags && plugin.tags.includes(tag))
           if (plugin.help) groups[tag].push(plugin)
           }
+	  
+	  // PP KONTAKNYA MEUREUNAN
+	  
+	 let pp = await conn.profilePictureUrl(m.chat).catch(_ => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
+let koniciwa = await (await fetch(pp)).buffer()
+
+
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || defaultMenu.before
     let header = conn.menu.header || defaultMenu.header
@@ -584,9 +591,12 @@ function _0x1766() {
         //await conn.sendMessage(m.chat, message, m, { mentionedJid: [m.sender] })
         
     //------------------- BUTTON VID
-    conn.sendButtonLoc(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
+   /* conn.sendButtonLoc(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
     ['SEWA', '.speed']
-]
+]*/
+
+conn.sendButtonLoc(m.chat, pp, text, wm, 'SEWA', '.sewa', 0, { gifPlayback: true, contextInfo: { externalAdReply: {title: namabot, body: date, sourceUrl: linkyt, thumbnail: fs.readFileSync('./thumbnail.jpg') }}})
+  }
 		   )
 	  
   } catch (e) {
