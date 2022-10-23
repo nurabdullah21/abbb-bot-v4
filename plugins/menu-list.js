@@ -584,10 +584,8 @@ function _0x1766() {
         //await conn.sendMessage(m.chat, message, m, { mentionedJid: [m.sender] })
         
     //------------------- BUTTON VID
-    conn.sendButton(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
-    ['SPEED', '.speed'],
-    ['OWNER', '.owner'],
-    ['DONASI', '.donasi']
+    conn.sendButtonLoc(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
+    ['SEWA', '.speed']
 ]
 		   )
 	  
@@ -633,16 +631,16 @@ function ucapan() {
   const time = moment.tz('Asia/Jakarta').format('HH')
   let res = "Sudah Dini Hari Kok Belum Tidur Kak? 🥱"
   if (time >= 4) {
-    res = "Pagi Lord 🌄"
+    res = "Selamat Pagi 🌄"
   }
   if (time >= 10) {
-    res = "Selamat Siang Kak ☀️"
+    res = "Selamat Siang ☀️"
   }
   if (time >= 15) {
-    res = "Selamat Sore Kak 🌇"
+    res = "Selamat Sore  🌇"
   }
   if (time >= 18) {
-    res = "Malam Kak 🌙"
+    res = "Selamat Malam 🌙"
   }
   return res
 }
