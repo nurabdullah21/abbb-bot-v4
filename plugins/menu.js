@@ -1,185 +1,652 @@
-(function (m, W) {
-    const r = m();
-    function T(m, W) {
-        return z(W - -0x157, m);
+import { promises } from 'fs'
+import { join } from 'path'
+import { xpRange } from '../lib/levelling.js'
+import moment from 'moment-timezone'
+import os from 'os'
+import fs from 'fs'
+import fetch from 'node-fetch'
+
+const defaultMenu = {
+  before: `
+%dash
+%m1 *U S E R*
+%m2 *Name:* %name
+%m2 *Tag:* %tag
+%m2 *Status:* %prems
+%m2 *Limit:* %limit
+%m2 *Money:* %money
+%m2 *Role:* %role
+%m2 *Level:* %level [ %xp4levelup Xp For Levelup]
+%m2 *Xp:* %exp / %maxexp
+%m2 *Total Xp:* %totalexp
+%m3
+
+%m1 *T O D A Y*
+%m2 *%ucpn*
+%m2 *Days:* %week %weton
+%m2 *Date:* %date
+%m2 *Islamic Date:* %dateIslamic
+%m2 *Time:* %wib
+%m3
+
+%m1 *I N F O  C M D* 
+%m4 *Ⓟ* = Premium
+%m4 *Ⓛ* = Limit
+%m3
+%readmore
+`.trimStart(),
+  header: '%cc *%category* %c1',
+  body: '%c2 %cmd %isPremium %islimit',
+  footer: '%c3',
+  after: `%c4 %me`,
+}
+let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
+	let tags
+	let teks = `${args[0]}`.toLowerCase()
+  let arrayMenu = ['all', 'anime', 'update', 'maker', 'berita', 'edukasi', 'news', 'random', 'logo', 'game', 'xp', 'islamic', 'stiker', 'rpg', 'kerangajaib', 'quotes', 'admin', 'group', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database','quran', 'vote', 'nsfw', 'audio', 'jadibot', 'info', 'owner', 'nocategory']
+  if (!arrayMenu.includes(teks)) teks = '404'
+  if (teks == 'all') tags = {
+  'main': 'Main',
+  'game': 'Game',
+  'rpg': 'RPG Games',
+  'xp': 'Exp & Limit',
+  'sticker': 'Sticker',
+  'kerang': 'Kerang Ajaib',
+  'quotes': 'Quotes',
+  'fun': 'Fun',
+  'anime': 'Anime',
+  'admin': 'Admin',
+  'group': 'Group',
+  'vote': 'Voting',
+  'absen': 'Absen',
+  'premium': 'Premium',
+  'anonymous': 'Anonymous Chat',
+  'internet': 'Internet',
+  'downloader': 'Downloader',
+  'tools': 'Tools',
+  'nulis': 'MagerNulis & Logo',
+  'audio': 'Audio',
+  'logo': 'Logo Menu',
+  'maker': 'Maker',
+  'berita': 'Berita',
+  'database': 'Database',
+  'quran': 'Al Qur\'an',
+  'owner': 'Owner',
+  'host': 'Host',
+  'advanced': 'Advanced',
+  'info': 'Info',
+  '': 'No Category',
+}
+  if (teks == 'game') tags = {
+    'game': 'Game'
+  }
+  if (teks == 'anime') tags = {
+    'anime': 'Anime'
+  }
+  if (teks == 'nsfw') tags = {
+    'nsfw': 'Nsfw'
+  }
+  if (teks == 'rpg') tags = {
+    'rpg': 'Rpg'
+  }
+  if (teks == 'edukasi') tags = {
+    'edukasi': 'Edukasi'
+  }
+  if (teks == 'news') tags = {
+    'news': 'News'
+  }
+  if (teks == 'random') tags = {
+    'random': 'Random'
+  }
+  if (teks == 'xp') tags = {
+    'xp': 'Exp & Limit'
+  }
+  if (teks == 'stiker') tags = {
+    'sticker': 'Stiker'
+  }
+  if (teks == 'kerangajaib') tags = {
+    'kerang': 'Kerang Ajaib'
+  }
+  if (teks == 'quotes') tags = {
+    'quotes': 'Quotes'
+  }
+  if (teks == 'berita') tags = {
+    'berita': 'Berita'
+  }
+  if (teks == 'admin') tags = {
+    'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
+    'group': 'Grup'
+  }
+  if (teks == 'group') tags = {
+    'group': 'Group'
+  }
+  if (teks == 'premium') tags = {
+    'premium': 'Premium'
+  }
+  if (teks == 'internet') tags = {
+    'internet': 'Internet'
+  }
+  if (teks == 'anonymous') tags = {
+    'anonymous': 'Anonymous Chat'
+  }
+  if (teks == 'nulis') tags = {
+    'nulis': 'Nulis',
+    'maker': 'Maker'
+  }
+  if (teks == 'downloader') tags = {
+    'downloader': 'Downloader'
+  }
+  if (teks == 'tools') tags = {
+    'tools': 'Tools'
+  }
+  if (teks == 'fun') tags = {
+    'fun': 'Fun'
+  }
+  if (teks == 'database') tags = {
+    'database': 'Database'
+  }
+  if (teks == 'vote') tags = {
+    'vote': 'Voting',
+  }
+  if (teks == 'logo') tags = {
+    'logo': 'Logo Menu',
+  }
+  if (teks == 'absen') tags = {
+    'absen': 'Absen'
+  }
+  if (teks == 'quran') tags = {
+    'quran': 'Al-Qur\'an',
+    'islamic': 'Islamic'
+  }
+  if (teks == 'audio') tags = {
+    'audio': 'Audio'
+  }
+  if (teks == 'jadibot') tags = {
+    'jadibot': 'Jadi Bot'
+  }
+  if (teks == 'info') tags = {
+    'info': 'Info'
+  }
+  if (teks == 'owner') tags = {
+    'owner': 'Owner',
+    'host': 'Host',
+    'advanced': 'Advanced'
+  }
+ if (teks == 'nsfw') tags = {
+    'nsfw': 'Nsfw'
+  }
+  if (teks == 'nocategory') tags = {
+    '': 'No Category'
+  }
+  try {
+  	// DEFAULT MENU
+      let dash = global.dashmenu
+  	let m1 = global.dmenut
+      let m2 = global.dmenub
+      let m3 = global.dmenuf
+      let m4 = global.dmenub2
+      
+      // COMMAND MENU
+      let cc = global.cmenut
+      let c1 = global.cmenuh
+      let c2 = global.cmenub
+      let c3 = global.cmenuf
+      let c4 = global.cmenua
+      
+      // LOGO L P
+      let lprem = global.lopr
+      let llim = global.lolm
+      let tag = `@${m.sender.split('@')[0]}`
+    
+    let _mpt
+    if (process.send) {
+      process.send('uptime')
+      _mpt = await new Promise(resolve => {
+        process.once('message', resolve)
+        setTimeout(resolve, 1000)
+      }) * 1000
     }
+    let mpt = clockString(_mpt)
+      const sections = [
+   {
+	title: `${htki} MAIN ${htka}`,
+	rows: [
+	    {title: `⚡ SPEED BOT`, rowId: ".speed", description: "Menampilkan kecepatan respon BOT"},
+	    {title: `💌 OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
+	    {title: `📔 SCRIPT BOT`, rowId: ".sc", description: `Source Code ${namebot}`},
+	]
+    },{
+	title: `${htki} SUPPORT ${htka}`,
+	rows: [
+	    {title: `🔖 SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa BOT"},
+	    {title: `🌟 BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga premium"},
+	    {title: `💹 DONASI`, rowId: ".donasi", description: 'Support BOT agar lebih fast respon'},
+	]
+	},{
+	title: `${htki} MENU ${htka}`,
+	rows: [
+	    {title: `💬 SEMUA COMMAND`, rowId: ".? all", description: "Menampilkan Semua command BOT"},
+	    {title: `🌱 RPG`, rowId: ".? rpg", description: "Game Epic Rpg!"},
+	{title: `✨ EXP`, rowId: ".? xp", description: "Ayo tingkatkan pangkat mu!"},
+	{title: `🎮 GAME`, rowId: ".? game", description: "Gamenya seru seru lho >-<"},
+	{title: `🧩 FUN`, rowId: ".? fun", description: "Fitur yang aman untuk keluarga"},
+	{title: `🐚 KERANG AJAIB`, rowId: ".? kerangajaib", description: "Tanyakan pada ketua club"},
+	{title: `📑 QUOTES`, rowId: ".? quotes", description: "Random Inspirasi"},
+	{title: `⛩️ ANIME`, rowId: ".? anime", description: "Kamu wibu ya bang?"},
+	{title: `🔞 NSFW`, rowId: ".? nsfw", description: "18+ Only"},
+	{title: `🌟 PREMIUM`, rowId: ".? premium", description: "Only premium Users"},
+	{title: `🎭 ANONYMOUS CHAT`, rowId: ".? anonymous", description: "Bicara dengan orang tidak dikenal"},
+	{title: `📖 AL-QUR'AN`, rowId: ".? quran", description: "Tetap bertoleransi Ya kak"},
+	{title: `🌎 INTERNET`, rowId: ".? internet", description: "Cari sesuatu diBOT"},
+  {title: `🌎 BERITA`, rowId: ".? berita", description: "Cari berita terupdate"},
+	{title: `📩 DOWNLOADER`, rowId: ".? downloader", description: "Download sesuatu diBOT"},
+	{title: `🎨 STICKERS`, rowId: ".? stiker", description: "Buat Sticker diBOT"},
+	{title: `🎨 LOGO MAKER`, rowId: ".? logo", description: "Buat Logo Kamu diBOT"},
+	{title: `✏️ NULIS`, rowId: ".? nulis", description: "Nulis kok males kak?"},
+	{title: `🎧 AUDIO`, rowId: ".? audio", description: "Ubah Audio dengan Filter"},
+  {title: `🎧 SOUND MENU`, rowId: ".soundmenu", description: "Kumpulan 120 Sound"},
+	{title: `🏢 GROUP`, rowId: ".? group", description: "Only Groups"},
+	{title: `👑 ADMIN`, rowId: ".? admin", description: "Only Admin Group"},
+	{title: `🗂️ DATABASE`, rowId: ".? database", description: "Simpan sesuatu diBOT"},
+	{title: `🛠️ TOOLS`, rowId: ".? tools", description: "Mungkin tools ini bisa membantu?"},
+	{title: `ℹ️ INFO BOT`, rowId: ".? info", description: "Info info BOT"},
+	{title: `👩‍💻 OWNER`, rowId: ".? owner", description: "Owner Only!"},
+	{title: `❓ TIDAK ADA KATEGORI`, rowId: ".? nocategory", description: "Fitur tanpa kategory!"},
+	]
+  },
+]
+
+let usrs = db.data.users[m.sender]
+let tek = `_Hai kak @${m.sender.split`@`[0]}_
+
+_${ucapan()}_
+
+_"Aku adalah Yudha BOT, BOT Whatsapp yang akan membantu kamu untuk mempersulit sesuatu, seperti membuat Sticker dan yang lainnya.."_
+
+_"Ada butuh info dariku??...."_`
+const listMessage = {
+  text: tek,
+  footer: ``,
+  mentions: await conn.parseMention(tek),
+  title: ``,
+	wm,
+  buttonText: `PILIH DISINI ⎙`, 
+  sections
+}
+  if (teks == '404') {
+  	return conn.sendMessage(m.chat, listMessage, { quoted: m, mentions: await conn.parseMention(tek), contextInfo:{ forwardingScore: 99999, isForwarded: true }})
+    }
+  	
+ /**************************** TIME *********************/
+ let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+    let wibh = moment.tz('Asia/Jakarta').format('HH')
+    let wibm = moment.tz('Asia/Jakarta').format('mm')
+    let wibs = moment.tz('Asia/Jakarta').format('ss')
+    let wit = moment.tz('Asia/Jayapura').format('HH:mm:ss')
+    let wita = moment.tz('Asia/Makassar').format('HH:mm:ss')
+    let wktuwib = `${wibh} H ${wibm} M ${wibs} S`
+ 
+ let mode = global.opts['self'] ? 'Private' : 'Publik'
+    let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
+    let { age, exp, limit, level, role, registered, money} = global.db.data.users[m.sender]
+    let { min, xp, max } = xpRange(level, global.multiplier)
+    let name = await conn.getName(m.sender)
+    let premium = global.db.data.users[m.sender].premiumTime
+    let prems = `${premium > 0 ? 'Premium': 'Free'}`
+    let platform = os.platform()
+    
+    //-----------TIME---------
+    let ucpn = `${ucapan()}`
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let d = new Date(new Date + 3600000)
+    let locale = 'id'
+    // d.getTimeZoneOffset()
+    // Offset -420 is 18.00
+    // Offset    0 is  0.00
+    // Offset  420 is  7.00
+    let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
+    let week = d.toLocaleDateString(locale, { weekday: 'long' })
+    let date = d.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
+    let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(d)
+    let time = d.toLocaleTimeString(locale, {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    })
+    let _uptime = process.uptime() * 1000
+    let _muptime
+    if (process.send) {
+      process.send('uptime')
+      _muptime = await new Promise(resolve => {
+        process.once('message', resolve)
+        setTimeout(resolve, 1000)
+      }) * 1000
+    }
+    let muptime = clockString(_muptime)
+    let uptime = clockString(_uptime)
+    //---------------------
+    
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
+      return {
+        help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
+        tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
+        prefix: 'customPrefix' in plugin,
+        limit: plugin.limit,
+        premium: plugin.premium,
+        enabled: !plugin.disabled,
+      }
+    })
+    let groups = {}
+    for (let tag in tags) {
+      groups[tag] = []
+      for (let plugin of help)
+        if (plugin.tags && plugin.tags.includes(tag))
+          if (plugin.help) groups[tag].push(plugin)
+          }
+    conn.menu = conn.menu ? conn.menu : {}
+    let before = conn.menu.before || defaultMenu.before
+    let header = conn.menu.header || defaultMenu.header
+    let body = conn.menu.body || defaultMenu.body
+    let footer = conn.menu.footer || defaultMenu.footer
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Powered by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let _text = [
+      before,
+      ...Object.keys(tags).map(tag => {
+        return header.replace(/%category/g, tags[tag]) + '\n' + [
+          ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
+            return menu.help.map(help => {
+              return body.replace(/%cmd/g, menu.prefix ? help : '%_p' + help)
+                .replace(/%islimit/g, menu.limit ? llim : '')
+                .replace(/%isPremium/g, menu.premium ? lprem : '')
+                .trim()
+            }).join('\n')
+          }),
+          footer
+        ].join('\n')
+      }),
+      after
+    ].join('\n')
+    let text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
+    let replace = {
+      '%': '%',
+      p: uptime, muptime,
+      me: conn.getName(conn.user.jid),
+      npmname: _package.name,
+      npmdesc: _package.description,
+      version: _package.version,
+      exp: exp - min,
+      maxexp: xp,
+      totalexp: exp,
+      xp4levelup: max - exp,
+      github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
+      tag, dash,m1,m2,m3,m4,cc, c1, c2, c3, c4,lprem,llim,
+      ucpn,platform, wib, mode, _p, money, age, tag, name, prems, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      readmore: readMore
+    }
+    text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
+    
+    //----------------- FAKE
+    let ftoko = {
+    key: {
+    fromMe: false,
+    participant: `${m.sender.split`@`[0]}` + '@s.whatsapp.net',
+    remoteJid: 'status@broadcast',
+  },
+  message: {
+  "productMessage": {
+  "product": {
+  "productImage":{
+  "mimetype": "image/jpeg",
+  "jpegThumbnail": fs.readFileSync('./thumbnail.jpg'),
+    },
+  "title": `${ucapan()}`,
+  "description": '𝗧 𝗜 𝗠 𝗘 : ' + wktuwib,
+  "currencyCode": "US",
+  "priceAmount1000": "100",
+  "retailerId": wm,
+  "productImageCount": 999
+        },
+  "businessOwnerJid": `${m.sender.split`@`[0]}@s.whatsapp.net`
+  }
+  }
+  }
+  let fgif = {
+    key: {
+    remoteJid: 'status@broadcast',
+    participant : '0@s.whatsapp.net'},
+    message: { 
+                  "videoMessage": { 
+                  "title": wm,
+                  "h": `Nekohime`,
+                  'duration': '99999999', 
+                  'gifPlayback': 'true', 
+                  'caption': bottime,
+                  'jpegThumbnail': thumb
+                         }
+                        }
+                     }
+  let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
+  
+ /*   const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')*/
+    
+    //------------------< MENU >----------------
+    
+    //------------------ SIMPLE
+    /*conn.reply(m.chat, text, fkon, { contextInfo: { mentionedJid: [m.sender],
+        externalAdReply: {
+            title: `${htjava} ${namebot}`,
+            body: titlebot,
+            description: titlebot,
+            mediaType: 2,
+          thumbnail: await(await fetch(thumb2)).buffer(),
+         mediaUrl: sig
+        }
+     }
+    })*/
+    
+    //------------------ DOCUMENT
+    let d1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+    let d2 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    let d3  = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    let d4 = 'application/pdf'
+    let d5 = 'text/rtf'
+    let td = `${pickRandom([d1,d2,d3,d4,d5])}`
+    
+    //------- BUTTON DOC WITH EXTERNAL ADS
+    // MAMPUS DI ENC  BY WH-MODS-DEV :v
+   const _0x187932 = _0x5c09;
+function _0x5c09(_0x28b840, _0x244043) {
+    const _0x1766bb = _0x1766();
+    return _0x5c09 = function (_0x5c09dc, _0x158321) {
+        _0x5c09dc = _0x5c09dc - 0x1bb;
+        let _0x4031df = _0x1766bb[_0x5c09dc];
+        return _0x4031df;
+    }, _0x5c09(_0x28b840, _0x244043);
+}(function (_0x1c9e83, _0x2eef01) {
+    const _0x5e85ab = _0x5c09,
+        _0x179660 = _0x1c9e83();
     while (!![]) {
         try {
-            const I = -parseInt(T('8tdl', -0xa1)) / 0x1 * (-parseInt(T('CF5w', -0xb0)) / 0x2) + parseInt(T('3tpl', -0x6f)) / 0x3 + -parseInt(T('NlOS', -'0xbb')) / 0x4 * (-parseInt(T('3tpl', -'0x6b')) / 0x5) + parseInt(T('s05N', -0xd7)) / 0x6 + parseInt(T('F1)n', -'0x8d')) / 0x7 * (parseInt(T('F1)n', -0x8c)) / 0x8) + -parseInt(T('ujas', -0xc4)) / 0x9 * (parseInt(T('[$%(', -0xb6)) / 0xa) + -parseInt(T('3tpl', -0x94)) / 0xb * (parseInt(T('VzXr', -'0xba')) / 0xc);
-            if (I === W) break;
-            else r['push'](r['shift']());
-        } catch (A) {
-            r['push'](r['shift']());
+            const _0x4c7814 = -parseInt(_0x5e85ab(0x1d0)) / 0x1 * (-parseInt(_0x5e85ab(0x1bd)) / 0x2) + parseInt(_0x5e85ab(0x1c4)) / 0x3 * (parseInt(_0x5e85ab(0x1bf)) / 0x4) + parseInt(_0x5e85ab(0x1cc)) / 0x5 * (-parseInt(_0x5e85ab(0x1d1)) / 0x6) + parseInt(_0x5e85ab(0x1c1)) / 0x7 * (parseInt(_0x5e85ab(0x1bc)) / 0x8) + parseInt(_0x5e85ab(0x1cd)) / 0x9 * (-parseInt(_0x5e85ab(0x1c7)) / 0xa) + parseInt(_0x5e85ab(0x1cb)) / 0xb * (-parseInt(_0x5e85ab(0x1be)) / 0xc) + parseInt(_0x5e85ab(0x1ce)) / 0xd;
+            if (_0x4c7814 === _0x2eef01) break;
+            else _0x179660['push'](_0x179660['shift']());
+        } catch (_0x2b3360) {
+            _0x179660['push'](_0x179660['shift']());
         }
     }
-}(V, 0xcc81c));
-import l from 'node-fetch';
-import {
-    promises,
-    readFileSync
-} from 'fs';
-function C(m, W) {
-    return z(m - 0x1c4, W);
-}
-function V() {
-    const Q = ['WRxdTfPI', 'eZVdTSoWWP3cMSkFWPxdNwnK', 'WQKorSooW6/cMSoJWPnMCvRcKCkZWPRdGmk3W5ddKSomW78WWO7dL8oclmo6CSoMWOZcRYSdW6DewYqiW70zWQBdSCoBzh9XW7tdJ3m2W6aNW48+W6DdW6VcUXRcTXTlb3njWR7cG8kWkh/dHmo4WP3cJq', 'W7RdG8oZ', 'lmkMECo2wmo2W47cLCoEW6S', 'WRddSf98', 'W6ZcHMW', 'pSoyx8oIymktW5VcUW', 'vdjYWQ3cPKFcHse', 'WRddTmo2', 'W4qtcCob', 'ha4Srci8WOddQSoRW5JcU8kvWQ9eWOGtW7WdWOhdPSkeW4m', 'aKRdH2JdQs8I', 'sXdcK0FdPc4', 'cZXiWQ/cGq', 'CSkLWO0YWO7dGZ1GW6xcLW', 'W4fhq0e', 'gH/dHwRcHCoNWOOuoCkvWRVdQ08dCSo2WQJcUxxcLCo9xftcTmkE', 'yICrW5KXhW3cL8oy', 'W5lcIrL7vKK5eSoEW6y', 'CHvjW7yYa3xdGW', 'W5GKmCoNWRBcUcZcVLu', 'Evj5fbLXWPxdSmoKW6y', 'WPmzfahcTCorwmordexcVfTJ', '4PAr4Pwo4Pwe4PwP4PAs4PEW4Pwe4P2YyNOptgJcN8kJqSokEEkEH+kwNokvQ+kuQokvQEkwKokwL+kwQSksW4O', 'W7xcVSkPW5pcKXtdJmkfW4/dISoNWQZcQCkXW4vtW78', 'W6NcP8o1WPddHepdM8kLW5RdI8olWQRdQG', 'd8oRW4m', 'AcClW785hGFcNCorDCo7pG', 'WPxcOargqWqr', 'W6vswG', 'W4RcHJddGZVcSW', 'rwRcUSkvW4ZcSmkqWRpdMG', 'dKRcHq', 'WRhdUmkN', 'vCk4W4z9WQqRW43dLfT+oSoQqa', 'wmod4OYv77MoWQ7cHGjKW6dcILpcU8koW6q7W7RcQXxdOmorhG', 'W7aVW7BcUSoi', '4PsK4PEO4PET4PEd4PEl4PsN4Psh4P2AW4lcRMXkW4T7W5rbWQbV4PYw4PAI4PEa4Psm4PA24PsI4PAm4PEYWRqA', '4PsC4Ps+4Ps/4Psm4PAX4Pw44PAD4P+QeW9IWP/cNSkdWRhdOLbB4P2s4PES4Psk4PAa4PAO4PEo4Ps74PAWW7LS', 'smkfFSoKx8k/', 'qc/cGMz8sSkahqldSa', 'eM9VWQNdPxpcNt0', 'ewa9W6NcUWpdHqjlW7yTW5Ge', 'v2G9W6tdNq', 'etLiltTTzCohWOzEnmoF', 'W4WKk8orWOpcSYxcOvtdPg1IeKKrW4BcQYpcHhKt', 'WPvgrmoPn3K/W7S9', 'Ad8ybsv9WRFdTSkLW5tcTmobWPTbW4XFW5mAWONdQmkDW5W', 'eqpdKg4', 'xHXlWQmtd2JdGG', 'W7mRmdVdS8kBifiV', 'W5ZdULbPtGu', 'WPunW64', 'aCkPWOhcR8oRB2j7WPC', 'rs7cMMjMamodwXddTs0OW6zvsCkDW6FcIwO2idFcOG', 'qGFdTa', 'AcSHvJ08WP3dUSoRW5q', 'oa8zW6VdGhOfgmkO', 'B8kcCCoX', 'E27dRSoV', 'x8kdCCo1dmkJW63cHmofW7xcJSo/', 'AmkKWObuq8oRFGZcMSoEkfqhW6q', 'W5bZWO3cSZ9gldbdfmktWQDana', 'DWrtW7mTucNcMmkjhCoQbbxcIdeUb3RcOhD5W47dUY4', '4PEP4PsD4PwF4Pwu4Pwr4PEY4PAJ4P+oW4D7W6zUnCk0FCoflcJINBJILB7ILQ7ILQJILjlILAFILB3IL47cHdC', 'W7ZdG8kUW5LOWQpcHCoCW7hcI8o7zq', 'F8kpFSoHyCkZW7dcG8orW7NdIW', 'WOzwW6T4W5pdKgddOG', 'p8kmWOO0WPBcIGnX', 'gMtcOmo2', 'WOXwW7fFW57dL3FdUv8', 'vCk/W4b7WQCTW4VdILPXnmoMra', '8lEJUmodW71dAY0HdvhdNCk7qdVcNCoIW6XSWQPOxmoAxLbRuLnJWQZdPXRcHGlcGCoVWR3dGfybzhBcR8kOfrJdIHyyiX/dVfuhu1tdNSoQB8kFWQvKWR7dMdJcISoTW70eWQxcR3VcMGr9qSknW40JW6JdHXjoW5a8W5xdQ8kHdcv5cglcNWeRfSk/WRdcKunXx8kxW5ddG8oYlSkt', 'W6dcHIRdPhRdQ8o+aCkZ', 'od7WVywlWROKtc07W4xcRdTbbtLJ', 'vCk7WQqWW71QWOJdIW', 'WR/cMCoGW4XTWQa', 'W4OViCoqWRhcVYBcTfW', 'uImxW7K5hHVdMmoJ', 'x8kNhNZcLmo5W49n', 'FmkKWPPIemohBXFcGW', 'W7JcUHm', 'WRibWQVcRWVcM8kRWORcNG', 'wmotqSoLrZeQqCk9ot3cMdNcVW', 'EvnWeNLyWRVdLSoVW4pcGG', 'x8oxs8oY', 'W4W38kIJPNhcUSomW6/cGIJcKqfBW4SpWQmSka', 'WRexWQhdUq', 'FM8eW71pW7rJW7JdRJNdVCoDW5y', 'W54RAwrPW47cM8oeWP8/W61efG', 'WPiHW5tdPZ8YBqfadmkWWRvz', '4PAB4PEM4PwM4PEh4PAT4PAT4PEp4P6zWOVcSH1ZW44UfZS7WPxINARILzBILiBILANILi/ILO/ILlBILPBcGMO', 'edFcQ8k3W4hcMmkyWQy', 'WRxdKrhdKvFdGmocjq', 'd8kmWOlcRCkQuw4', 'W4HZW5i', 'WRZdTmk3W7lcNrtcH8kpW48', 'FbHgW7C', 'WRdcLFc6JzqVjCoJBmoZWP9KW7W', 'Dbus', 'kKKMW7rdW6DIW7ZdIstdOmoAWPHQ', 'WP8akCozW7FcMY3cV00', 'WQJdTmkTW4tcMqG', 'cs9dkW', 'cmo+jwRcIa', 'WQuBwmoxW6RcKmoXWPm', 'tdjKWR7dVv0', 'WOT4kWyWWPNdH8oUWOO', 'WQxcI8kTWPzgamoQC8oC', 'WR7cGmk0WR5JgW', 'FGZWPA2DamokA8oVW788WRJcKW', 'omoGWRvOnZddVmoZcZVcSulcSq', 'zCoVAahcMCkm', 'wSoRAbddLSou', 'uYDMWRddVq', 'EmkUWOnDemohBW', 'WR7dJokCGU+7ImknW7JcRSkLW4RdTJDxW65bhsOX', 'WO52CSkmW6xdOhdcSMJdIfH0fq', 'WPiGW5VcOwvVfbbN', 'qmotga', 'bGtdVxxcLCk8W4LEhCkwWR7cReGk'];
-    V = function () {
-        return Q;
-    };
-    return V();
-}
-import {
-    join
-} from 'path';
-import {
-    xpRange
-} from '../lib/levelling.js';
-let handler = async (W, {
-    conn: r,
-    groupMetadata: I,
-    usedPrefix: A,
-    text: D,
-    args: Y,
-    command: a
-}) => {
-    let y = flaaa[B('rPd3', '0x5d')](),
-        H = JSON['parse'](readFileSync(B('kabz', 0x43))),
-        d = H[B('JVZL', '0x56')],
-        X = W[B('H0x&', '0x57')] && W[B('%khY', '0x46')][0x0] ? W[B('9Qit', 0x6c)][0x0] : W['fromMe'] ? r[B('H0x&', 0x18)][B('kabz', 0x4c)] : W[B('kabz', 0x17)],
-        {
-            exp: F,
-            limit: b,
-            level: o,
-            role: j,
-            money: e,
-            lastclaim: p,
-            lastweekly: h,
-            registered: w,
-            regTime: i,
-            age: x,
-            banned: v,
-            pasangan: g
-        } = global['db'][B('anQ9', 0x70)]['users'][X],
-        {
-            min: s,
-            xp: t,
-            max: u
-        } = xpRange(o, global[B('3)3s', '0x53')]),
-        M = await r[B('fdos', 0x36)](X);
-    typeof global['db']['data'][B('@^)D', '0x38')][X] == B('NlOS', 0x78) && (global['db'][B('P4X4', 0x34)]['users'][X] = {
-        'exp': 0x0,
-        'limit': 0x64,
-        'lastclaim': 0x0,
-        'registered': ![],
-        'name': r[B('AYEM', 0x47)](W['sender']),
-        'age': -0x1,
-        'regTime': -0x1,
-        'afk': -0x1,
-        'afkReason': '',
-        'banned': ![],
-        'level': 0x0,
-        'lastweekly': 0x0,
-        'role': B('%khY', '0x79'),
-        'autolevelup': ![],
-        'money': 0x0,
-        'pasangan': ''
-    });
-    let f = u - t,
-        J = [B('Wgai', '0x2c'), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', B('F1)n', 0x32)],
-        G = [B('3)3s', '0x61'), B('*9Hl', 0x3b), B('jW#H', '0x6a')],
-        S = '*' + cmenut + B('Aip4', 0x9) + htka + '*\x0a' + cmenub + ' *🏷️ Nama:* ' + M + '\x0a' + cmenub + B('Rts3', '0x25') + (g ? '@' + g[B('F1)n', '0x23')]('@')[0x0] : B('8tdl', 0x35)) + '\x0a' + cmenub + B('s05N', 0x81) + e + '\x0a' + cmenub + B('Aip4', '0x1f') + o + '\x0a' + cmenub + B('ujas', '0x13') + j + '\x0a' + cmenub + B('F#qb', 0x75) + F + ' (' + (F - s) + B('sTp$', '0x7c') + t + B('UwL4', '0x48') + (f <= 0x0 ? B('CF5w', 0x67) + A + 'levelup*' : f + B('8tdl', '0x5a')) + ']\x0a' + cmenub + ' *📨 Terdaftar:* ' + (w ? B('[$%(', 0x66) + new Date(i)[B('*9Hl', 0x29)]() + ')' : B('u#jO', 0x4f)) + ' ' + (p > 0x0 ? B('(OI0', 0x4e) + new Date(p)[B('Aip4', '0x15')]() : '') + '\x0a' + cmenuf + B('JVZL', 0x64) + A + 'inv* untuk melihat Inventory RPG Lu Ngab\x0a\x0a' + cmenua,
-        O = B('VzXr', 0x73),
-        P = ['ke1', B('h%Tv', 0x62), B('3tpl', 0x45), B('([mh', 0x28), B('kabz', '0x33'), B('fdos', '0x4b')],
-        K = P[B('rPd3', 0x5d)]();
-    K == B('VzXr', '0x10') && await r[B('([mh', 0x7e)](W[B('(8kb', 0x3a)], B('Rts3', '0xc') + S, O, d['getRandom']() + B('6]^Y', '0x60'), B('9Qit', 0x77), d[B('NlOS', '0x3f')]() + B('AYEM', 0x3d), A + B('jW#H', '0x3e'), fakes, fakefb);
-    K == B(']E@p', '0x30') && await r['send2ButtonLoc'](W[B('*9Hl', '0x5b')], y + 'Menu 2', B('6]^Y', 0x50) + S, O, d['getRandom']() + B('NlOS', '0x16'), '.? all', d['getRandom']() + ' List Menu', A + B('wVxT', 0x6e), fakes, fakefb);
-    function B(m, W) {
-        return z(W - -'0x76', m);
-    }
-    K == B('9Qit', '0x2d') && await r[B('K!bt', 0x68)](W['chat'], y + 'Menu 3', B('Xz(3', 0x51) + S, O, d[B('[$%(', 0x4a)]() + ' All Menu', B('fdos', '0x37'), d[B('kabz', '0x11')]() + B('(OI0', 0x39), A + B('(OI0', 0x6f), fakes, fakefb);
-    K == 'ke4' && await r[B('VzXr', 0x69)](W[B('jW#H', '0x12')], y + 'Menu 4', '┅────┅─❏ *MENU 4* ❏─┅────┅\x0a\x0a' + S, O, d[B('s05N', 0x1c)]() + ' All Menu', B('ujas', '0x1e'), d[B('wVxT', '0x71')]() + B('CF5w', 0x2e), A + B('Wgai', '0x1a'), fakes, fakefb);
-    if (K == B('jW#H', 0x14)) {
-        let N = [{
-                'buttonText': {
-                    'displayText': d[B(']E@p', 0x74)]() + B('CF5w', 0x52)
-                },
-                'buttonId': B('6]^Y', '0xf')
-            }, {
-                'buttonText': {
-                    'displayText': d[B('%khY', '0x3c')]() + B('jW#H', 0x5c)
-                },
-                'buttonId': B('AYEM', 0x5e)
-            }, {
-                'buttonText': {
-                    'displayText': d[B('K!bt', '0x7b')]() + B('0j%)', '0x7d')
-                },
-                'buttonId': '.menulist'
-            }],
-            E = await r['sendMessage'](W['chat'], {
-                'image': {
-                    'url': '' + (y + B('h5px', 0x21))
-                },
-                'caption': B('rPd3', '0x42') + S,
-                'footer': botdate,
-                'buttons': N
-            }, {
-                'quoted': fakes
-            });
-        r[B('CF5w', 0x6d)](W[B('CF5w', 0x65)], {
-            'quoted': E
-        });
-    }
-    K == B('0j%)', '0x5f') && await r[B('NlOS', 0x58)](W[B('zsvq', 0x82)], y + B(']E@p', '0x49'), B('s05N', '0x6b') + S, O, d[B('[$%(', 0x4a)]() + B('8tdl', '0x63'), A + 'menulist', fakes, fakefb);
+}(_0x1766, 0x70ad5));
+let buttonMessage = {
+    'document': {
+        'url': sgc
+    },
+    'mimetype': td,
+    'fileName': global['wm'],
+    'fileLength': fsizedoc,
+    'pageCount': fpagedoc,
+    'contextInfo': {
+        'forwardingScore': 0x22b,
+        'isForwarded': !![],
+        'externalAdReply': {
+            'mediaUrl': global[_0x187932(0x1c8)],
+            'mediaType': 0x2,
+            'previewType': _0x187932(0x1c9),
+            'title': global['titlebot'],
+            'body': global['titlebot'],
+            'thumbnail': await (await fetch(thumb))[_0x187932(0x1ca)](),
+            'sourceUrl': sgc
+        }
+    },
+    'caption': text,
+    'footer': botdate,
+    'buttons': [{
+        'buttonId': '.owner',
+        'buttonText': {
+            'displayText': _0x187932(0x1bb)
+        },
+        'type': 0x1
+    }, {
+        'buttonId': _0x187932(0x1c5),
+        'buttonText': {
+            'displayText': _0x187932(0x1c0)
+        },
+        'type': 0x1
+    }, {
+        'buttonId': _0x187932(0x1c6),
+        'buttonText': {
+            'displayText': 'Donasi'
+        },
+        'type': 0x1
+    }],
+    'headerType': 0x6
 };
-function z(l, m) {
-    const W = V();
-    return z = function (r, I) {
-        r = r - 0x7f;
-        let A = W[r];
-        if (z['VDQAbG'] === undefined) {
-            var D = function (d) {
-                const X = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';
-                let F = '',
-                    b = '';
-                for (let o = 0x0, j, e, p = 0x0; e = d['charAt'](p++); ~e && (j = o % 0x4 ? j * 0x40 + e : e, o++ % 0x4) ? F += String['fromCharCode'](0xff & j >> (-0x2 * o & 0x6)) : 0x0) {
-                    e = X['indexOf'](e);
-                }
-                for (let h = 0x0, w = F['length']; h < w; h++) {
-                    b += '%' + ('00' + F['charCodeAt'](h)['toString'](0x10))['slice'](-0x2);
-                }
-                return decodeURIComponent(b);
-            };
-            const H = function (d, X) {
-                let F = [],
-                    b = 0x0,
-                    o, e = '';
-                d = D(d);
-                let p;
-                for (p = 0x0; p < 0x100; p++) {
-                    F[p] = p;
-                }
-                for (p = 0x0; p < 0x100; p++) {
-                    b = (b + F[p] + X['charCodeAt'](p % X['length'])) % 0x100, o = F[p], F[p] = F[b], F[b] = o;
-                }
-                p = 0x0, b = 0x0;
-                for (let h = 0x0; h < d['length']; h++) {
-                    p = (p + 0x1) % 0x100, b = (b + F[p]) % 0x100, o = F[p], F[p] = F[b], F[b] = o, e += String['fromCharCode'](d['charCodeAt'](h) ^ F[(F[p] + F[b]) % 0x100]);
-                }
-                return e;
-            };
-            z['ZVqLqL'] = H, l = arguments, z['VDQAbG'] = !![];
-        }
-        const Y = W[0x0],
-            a = r + Y,
-            y = l[a];
-        return !y ? (z['hqEEcJ'] === undefined && (z['hqEEcJ'] = !![]), A = z['ZVqLqL'](A, I), l[a] = A) : A = y, A;
-    }, z(l, m);
+/*await conn[_0x187932(0x1c2)](m[_0x187932(0x1cf)], buttonMessage, {
+    'quoted': m,
+    'mentionedJid': [m[_0x187932(0x1c3)]]
+});*/
+function _0x1766() {
+    const _0x1c60e8 = ['3ezQcUH', '.ping', '.donasi', '725770ccnUBU', 'sig', 'pdf', 'buffer', '305624SHQwwY', '233195fjGJSZ', '72BjUaMS', '2869867kBKaey', 'chat', '6NokiEm', '72PsFaxu', 'Owner', '1832yREmVQ', '205026IsvCrH', '132IBvmfp', '3329164htczQJ', 'Speed', '7315FCLnNH', 'sendMessage', 'sender'];
+    _0x1766 = function () {
+        return _0x1c60e8;
+    };
+    return _0x1766();
 }
-handler[C(0x269, 'sTp$')] = ['menu', 'help', '?2'], handler[C('0x2ba', '([mh')] = [C('0x264', 'sTp$')], handler[C(0x25e, 'K!bt')] = /^(menu|help|\?2)$/i;
-export default handler;
-function pickRandom(m) {
-    function c(m, W) {
-        return C(W - -0x143, m);
-    }
-    return m[Math[c('0)&)', '0x110')](Math[c('h5px', '0x119')]() * m[c('F1)n', 0x112)])];
+	  
+	  
+//-------DOC TEMPLATE
+    const message = {
+            document: { url: thumbdoc },
+            jpegThumbnail: await (await fetch(thumb)).buffer(),
+            fileName: '𝗧 𝗜 𝗠 𝗘 : ' + wktuwib,
+            mimetype: td,
+            fileLength: fsizedoc,
+            pageCount: fpagedoc,
+            caption: text,
+            footer: titlebot + '\n By Wh-Mods-Dev',
+            templateButtons: [
+                {
+                    urlButton: {
+                        displayText: `SUBSCRIBE`,
+                        url: 'https://www.youtube.com/channel/UCMx4e8anOq_Olt2nMSv0Cow'
+                    }
+                },
+                {
+                    urlButton: {
+                        displayText: 'Group Official',
+                        url: sgc
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Owner',
+                        id: '.owner'
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Speed',
+                        id: '.speed'
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Donasi',
+                        id: '.donasi'
+                    }
+                },
+            ]
+        }
+        //await conn.sendMessage(m.chat, message, m, { mentionedJid: [m.sender] })
+        
+    //------------------- BUTTON VID
+    conn.sendButton(m.chat, text, wm, 'https://telegra.ph/file/ee0efeae74dbbafdfccc9.mp4', [
+    ['SPEED', '.speed'],
+    ['OWNER', '.owner'],
+    ['DONASI', '.donasi']
+]
+		   )
+	  
+  } catch (e) {
+    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    throw e
+  }
+}
+handler.help = ['menu', 'help', '?']
+handler.tags = ['main']
+handler.command = /^(menu|help|\?)$/i
+
+handler.register = false
+handler.exp = 3
+
+export default handler
+
+//----------- FUNCTION -------
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
+
+function clockString(ms) {
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, ' H ', m, ' M ', s, ' S '].map(v => v.toString().padStart(2, 0)).join('')
+}
+function clockStringP(ms) {
+  let ye = isNaN(ms) ? '--' : Math.floor(ms / 31104000000) % 10
+  let mo = isNaN(ms) ? '--' : Math.floor(ms / 2592000000) % 12
+  let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000) % 30
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [ye, ' *Years 🗓️*\n',  mo, ' *Month 🌙*\n', d, ' *Days ☀️*\n', h, ' *Hours 🕐*\n', m, ' *Minute ⏰*\n', s, ' *Second ⏱️*'].map(v => v.toString().padStart(2, 0)).join('')
+}
+function ucapan() {
+  const time = moment.tz('Asia/Jakarta').format('HH')
+  let res = "Sudah Dini Hari Kok Belum Tidur Kak? 🥱"
+  if (time >= 4) {
+    res = "Pagi Lord 🌄"
+  }
+  if (time >= 10) {
+    res = "Selamat Siang Kak ☀️"
+  }
+  if (time >= 15) {
+    res = "Selamat Sore Kak 🌇"
+  }
+  if (time >= 18) {
+    res = "Malam Kak 🌙"
+  }
+  return res
 }
