@@ -9,8 +9,8 @@ let handler = async (m, { conn, isOwner }) => {
 *${dmenub} Dibatasi :* ${groups[i].restrict}
 *${dmenub} Ephemeral :* ${new Date(groups[i].ephemeralDuration* 1000).toDateString()}
 *${dmenub} Admin Group :* ${groups[i].participants.filter(p => p.admin).map((v, i) => `\n${dmenub} ${i + 1}. @${v.id.split('@')[0]}`).join(' [admin]')}
-${isOwner ? `*${dmenub} Participants :* ${groups[i].participants.length}` : ''}
-${isOwner ? `*${dmenub} isBotAdmin :* [ ${!!groups[i].participants.find(v => v.id == conn.user.jid).admin} ]` : ''}
+${isOwner ? `*${dmenub} Jumlah Anggota :* ${groups[i].participants.length}` : ''}
+${isOwner ? `*${dmenub} BOT Admin :* [ ${!!groups[i].participants.find(v => v.id == conn.user.jid).admin} ]` : ''}
 *${dmenub} Di Buat :* ${new Date(groups[i].subjectTime* 1000).toDateString()}
 *${dmenub} Creation :* ${new Date(groups[i].creation* 1000).toDateString()}
 ${dmenuf}`.trim()
