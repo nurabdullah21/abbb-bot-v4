@@ -15,7 +15,8 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
         
 Jika warning mencapai 10 kamu akan *dibanned+kick*
 
-“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim).${isBotAdmin ? '' : '\n\n_Bot bukan Admin_'}`, author, ['Matikan Fitur', '/disable antitoxic'], m)
+_“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam”_
+_(HR. al-Bukhari dan Muslim)_.${isBotAdmin ? '' : '\n\n_Bot bukan Admin_'}`, author, ['Matikan Fitur', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
             // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     global.db.data.users[m.sender].warn += 1
