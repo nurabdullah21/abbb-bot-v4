@@ -23,7 +23,7 @@ Jika Sudah Dipahami Rulesnya, Silakan Ketik *.menu* Untuk Memulai!
 let wibu = `https://i.ibb.co/P5BBzbf/286637238-392674839545088-948545114162206238-n.jpg` 
 let thumb = await(await fetch(wibu)).buffer()
 let imgnya = 'https://telegra.ph/file/73dc6b92751ec9608c10b.jpg'
-conn.sendMessage(m.chat, str, str, 0, m)
+conn.reply(m.chat, str)
 }
 handler.help = ['donasi']
 handler.tags = ['info']
