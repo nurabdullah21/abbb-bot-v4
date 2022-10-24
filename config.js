@@ -1,24 +1,3 @@
-// S C R I P T  O R I  B Y  Bochilgaming And KANNACHAN 🔭
-// Ditulis Ulang Oleh WH MODS DEV
-// Credits, jangan dihapus atau diubah!
-
-// - - THANKS TO - -
-// • Allah SWT
-// • Nurutomo
-// • Bochilgaming
-// • Rominaru
-// • Kannachann
-// • FahriAdison
-// • The.Sad.Boy01
-// • Rlxfly
-// • Rasel comel
-// • ImYanXiao
-// • WH MODS DEV
-// • Xtreshe
-// • Dll
-
-//[!] Jangan Lupa Ganti Ownernya
-
 import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
@@ -53,24 +32,24 @@ global.sig = 'https://instagram.com/_ctzhid' // ig
 global.sgh = 'https://github.com/WH-MODS-BOT/' // github
 global.sgc = 'https://chat.whatsapp.com/FQkbyTEfvES3D363uxMEFOI' // group whatsapp
 global.sdc = 'https://www.discord.com'//discord
-global.snh = 'https://www.youtube.com/channel/UCMx4e8anOq_Olt2nMSv0Cow' // my youtube channel
+global.snh = 'https://www.youtube.com/' // my youtube channel
 global.sfb = 'https://www.facebook.com/' // facebook
 global.syt = 'https://www.youtube.com/' // my youtube channel "kalau ada yt ke 2 tarok link nya disini"
 
 /*============== PAYMENT ==============*/
-global.pdana = '08XXXXXXXXXX' //dana
-global.povo = '08XXXXXXXXXX' //ovo
-global.pgopay = '08XXXXXXXXXX' //gopay
-global.plinkaja = '08XXXXXXXXXX' //link aja
-global.ppulsa = '08XXXXXXXXXX' //telkomsel
-global.ppulsa2 = '08XXXXXXXXXX' // kalau ada kartu lain isi aja
-global.psaweria = 'https://saweria.co/mrw4h1d'
+global.pdana = '083155997775' //dana
+global.povo = '083155997772' //ovo
+global.pgopay = '083155997772' //gopay
+global.plinkaja = '083155997772' //link aja
+global.ppulsa = '083155997772' //telkomsel
+global.ppulsa2 = '083155997772' // kalau ada kartu lain isi aja
+global.psaweria = 'https://saweria.co/'
 
 /*============== NOMOR ==============*/
 global.nomorbot = '6285723580038'
 global.nomorown = '6283155997772'
-global.namebot = 'WH-MODS-BOT-V1'
-global.nameown = 'WH MODS DEV'
+global.namebot = 'YUDHA BOT'
+global.nameown = 'Yudha Permana'
 
 /*============== Github Thanks To ==============*/
 global.namagithub = 'Nama Github Belum Diisi' // nama github lu
