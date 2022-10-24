@@ -904,7 +904,7 @@ export async function handler(chatUpdate) {
                         antiLink: false,
                         antiSticker: false,
                         antiToxic: false,
-                        detect: false,
+                        detect: true,
                         delete: true,
                         expired: 0,
                         getmsg: false,
@@ -924,7 +924,7 @@ export async function handler(chatUpdate) {
                         useDocument: false,
                         viewOnce: false,
                         viewonce: false,
-                        welcome: false,
+                        welcome: true,
                     }
             let settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
