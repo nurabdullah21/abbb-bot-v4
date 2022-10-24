@@ -1,4 +1,4 @@
-const moment = require('moment')
+//const moment = require('moment')
 
 let handler = async (m, { conn }) => {
 	let grup = Object.keys(await conn.groupFetchAllParticipating())
