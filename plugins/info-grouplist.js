@@ -15,7 +15,7 @@ ${isOwner ? `*${dmenub} BOT Admin :* [ ${!!groups[i].participants.find(v => v.id
 *${dmenub} Creation :* ${new Date(groups[i].creation* 1000).toDateString()}
 ${dmenuf}`.trim()
     }).join('\n\n')
-    await conn.sendButtonImg(m.chat, thumb, str, author, 'ʙᴀᴄᴋ ᴛᴏ ᴍᴇɴᴜ', '.menu', 0, adReply)
+    await conn.sendButtonImg(m.chat, thumb, str, author, 'ʙᴀᴄᴋ ᴛᴏ ᴍᴇɴᴜ', '.menu', 0, 0)
 }
 
 handler.help = ['groups', 'grouplist']
