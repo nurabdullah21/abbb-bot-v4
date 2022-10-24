@@ -1311,16 +1311,7 @@ export async function participantsUpdate({ id, participants, action }) {
   let welcom = 'https://telegra.ph/file/aab124271570c51f76aac.jpg'
 
   let godbye = 'https://telegra.ph/file/deaf59bc3e5216eaae814.jpg'
-  conn.sendButtonImg(id, await(await fetch(action === 'add' ? wel : lea)).buffer(), 'Group Messege', text, action == 'add' ? 'ᴡᴇʟᴄᴏᴍᴇ' : 'sᴀʏᴏɴᴀʀᴀᴀ', action === 'add' ? '.intro' : 'WH MODS BOT', fakes, { contextInfo: { externalAdReply: { showAdAttribution: true,
-    mediaUrl: 'https://www.instagram.com/_ctzhid/',
-    mediaType: 2, 
-    description: sgc,
-    title: "Jᴏɪɴ Sɪɴɪ Cᴜʏ",
-    body: wm,
-    thumbnail: await(await fetch(action === 'add' ? welcom : godbye)).buffer(),
-    sourceUrl: sig
-     }}
-  })
+  conn.sendFile(id, await(await fetch(action === 'add' ? wel : lea)).buffer(), 'Group Messege', text, 0)
   
                     }
                 }
