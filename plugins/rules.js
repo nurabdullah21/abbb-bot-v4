@@ -3,26 +3,23 @@ let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
 //let handler = async(m, { conn, text, usedPrefix, command }) => {
 //let pp = await conn.profilePictureUrl(nomorown + '@s.whatsapp.net', 'image')
 
-let str = `──「 ATURAN 」──
+let str = `*────── 「 DONATE 」 ──────*
+Hai 👋
+Kalian bisa mendukung saya agar bot ini tetap up to date dengan SCAN BARCODE diatas menggunakan Aplikasi DANA !
+Berapapun donasi kalian akan sangat berarti 👍
 
-1. Jangan SPAM Bot.
-Sanksi : *WARN/SOFT BLOCK*
+DANA [${global.pdana}]
 
-2. Jangan Call/Video Call Bot.
-Sanksi : *SOFT BLOCK*
-
-3. Jangan Mengeksploitasi Bot.
-Sanksi : *PERMANENT BLOCK*
-
-Jika Sudah Di Pahami Aturannya, Silahkan Ketik *.menu* Untuk Memulai!
-
-──「 YUDHA BOT 」──`
+𝐀𝐫𝐢𝐠𝐚𝐭𝐨𝐮!!!
+Contact person Owner:
+wa.me/6283155997772 (Owner)`
 let wibu = `https://i.ibb.co/P5BBzbf/286637238-392674839545088-948545114162206238-n.jpg` 
 let thumb = await(await fetch(wibu)).buffer()
-conn.sendMessage(m.chat, str, m, { mentionedJid: [m.sender] })
-          }
-handler.help = ['rules']
-handler.tags = ['aturan']
-handler.command = /^(rules|aturan)/i
+let imgnya = 'https://telegra.ph/file/73dc6b92751ec9608c10b.jpg'
+conn.sendFile(m.chat, imgnya, str, str, 0)
+}
+handler.help = ['donasi']
+handler.tags = ['info']
+handler.command = /^dona(t|s)$/i
 
 export default handler
