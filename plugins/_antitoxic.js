@@ -1,34 +1,35 @@
-/*
-
-let handler = m => m
-
-let linkRegex = /(a(su|nj(([ie])ng|([ie])r)?)|me?me?k|ko?nto?l|ba?bi|fu?ck|ta(e|i)k|bangsat|g([iueo])bl([iueo])(k|g)|g ([iueo]) b l ([iueo]) (k|g)|a (n j (i n g|i r)?)s u|col(i|ay)|an?jg|b([ia])ngs([ia])?t|t([iuo])l([iuo])l)/i
-handler.before = function (m, { user }) {
-  if (m.isBaileys && m.fromMe) return true
-  if (/masuk|lanjutkan|banjir|(per)?panjang/g.exec(m.text)) return true
-  let chat = global.DATABASE.data.chats[m.chat]
-  let isGroupToxic = linkRegex.exec(m.text)
-
-  if (chat.antiToxic && isGroupToxic) {
-    m.reply('Jangan Toxic ya!!\n' + readMore + '\nMau Matikan? ketik * /disable antitoxic*')
-    if (global.opts['restrict']) {
-      // if (!user.isAdmin) return true
-      // this.groupRemove(m.chat, [m.sender])
-    }
-  }
-  return true
-}
-
-export const disable = true
-
-const more = String.fromCharCode(8206)
-const readMore = more.repeat(4001)
-*/
-
 const isToxic = /anj(k|g)|ajn?(g|k)|a?njin(g|k)|bajingan|b(a?n)?gsa?t|ko?nto?l|me?me?(k|q)|pe?pe?(k|q)|meki|titi(t|d)|pe?ler|tetek|toket|ngewe|go?blo?k|to?lo?l|idiot|(k|ng)e?nto?(t|d)|jembut|bego|dajj?al|janc(u|o)k|pantek|puki ?(mak)?|kimak|kampang|lonte|col(i|mek?)|pelacur|henceu?t|nigga|fuck|dick|bitch|tits|bastard|asshole|a(su|sw|syu)/i // tambahin sendiri
 
 export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBotAdmin }) {
-    if (m.isBaileys && m.fromMe)
+  if (m.isBaileys && m.fromMe && isOwner) return !0
+    let chat = db.data.chats[m.chat]
+    let user = db.data.users[m.sender]
+    let isBadword = badwordRegex.exec(m.text)
+
+    if (!chat.antiBadword && !chat.isBanned && !user.banned && isBadword && !isOwner && !isAdmin) {
+        user.warning += 1
+        this.send2Button(m.chat, `*Badword terdeteksi!*
+Warning: ${user.warning} / 10
+Jika warning mencapai 10 kamu akan *dibanned+kick*
+
+ketik *#on antibadword* untuk menyalakan antibadword
+ketik *#astagfirullah* atau *#maaf* untuk mengurangi warning
+
+“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim).`, wm, 'MATIKAN ANTIBADWORD', '.off antibadword', 'ASTAGHFIRULLAH', '.maaf', m)
+        if (user.warning >= 10) {
+            user.banned = true
+            if (m.isGroup) {
+                if (isBotAdmin) {
+                	this.groupParticipantsUpdate(m.chat, [m.sender], "remove")
+                   //this.groupSettingChange(m.chat, GroupSettingChange.messageSend, false)
+                }
+            }
+        }
+    }
+    return !0
+  
+  
+    /*if (m.isBaileys && m.fromMe)
         return !0
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
@@ -46,7 +47,7 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     return conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
         } else if (!bot.restrict) return m.reply('Semoga harimu suram!')
     }
-    return !0
+    return !0*/
 }
 
 export const disable = true
