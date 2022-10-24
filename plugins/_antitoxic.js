@@ -13,8 +13,6 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     if (chat.antiToxic && isAntiToxic) {
         await conn.sendButton(m.chat, `*Kata Tak Pantas Terdeteksi!*
         
-Jika warning mencapai 10 kamu akan *dibanned+kick*
-
 _“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam”_
 _(HR. al-Bukhari dan Muslim)_.${isBotAdmin ? '' : '\n\n_Bot bukan Admin_'}`, author, ['Matikan Fitur', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
