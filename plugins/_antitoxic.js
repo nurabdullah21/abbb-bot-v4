@@ -11,13 +11,18 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     let bang = m.key.id
     
     if (chat.antiToxic && isAntiToxic) {
-        await conn.sendMessage(m.chat, author, `*Kata Aneh Terdeteksi!* ${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, m)
+        await conn.sendButton(m.chat, `*Kata Tak Pantas Terdeteksi!*
+        
+        Warning: ${user.warning} / 10
+Jika warning mencapai 10 kamu akan *dibanned+kick*
+
+“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim).${isBotAdmin ? '' : '\n\n_Bot bukan Admin_'}`, author, ['Matikan Fitur', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
             // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     global.db.data.users[m.sender].warn += 1
     global.db.data.users[m.sender].banned = true
     return conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
-        } else if (!bot.restrict) return m.reply('Semoga harimu suram!')
+        } else if (!bot.restrict) return m.reply('Semoga harimu suram & cepat *Sadar!*')
     }
     return !0
 }
