@@ -15,8 +15,8 @@ let handler = async (m, { conn }) => {
 
 let handler = async (m, { conn }) => {
     let txt = ''
-    for (let [jid, chat] of Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats)) txt += `${await conn.getName(jid)}\n🪪${jid} [${chat?.metadata?.read_only ? 'Left' : 'Joined'}]\n\n`
-    m.reply(`List Groups:
+    for (let [jid, chat] of Object.entries(conn.chats).filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats)) txt += `${await conn.getName(jid)}\n🪪${jid} [${chat?.metadata?.read_only ? 'Keluar' : 'Bergabung'}]\n\n`
+    m.reply(`Berikut Daftar Group :
 ${txt}
 `.trim())
 }
