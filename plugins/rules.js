@@ -20,6 +20,6 @@ conn.sendFile(m.chat, imgnya, str, str, 0)
 }
 handler.help = ['donasi']
 handler.tags = ['info']
-handler.command = /^dona(t|s)$/i
+handler.command = /^rule(t|s)$/i
 
 export default handler
