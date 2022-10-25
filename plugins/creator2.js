@@ -6,10 +6,11 @@ let name = await conn.getName(who)
 
 
 if (command == 'whmods1') {
- let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner WHMODS;Bot;;Md\nFN:Saya Owner WH MODS Bot WhatsApp, Md\nNICKNAME:👑 Owner WH MODS Bot\nORG:WH\nTITLE:MODS\nitem1.TEL;waid=6282127487538:+62 821-2748-7538\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com/channel/UCMx4e8anOq_Olt2nMSv0Cow\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:whmods41@gmail.com\nitem3.X-ABLabel:💌 Mail Owner WH MODS BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 KEPO LU YAH\nEND:VCARD`
+ let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner YUDHA;BOT;;Md\nFN:Owner YUDHA BOT\nNICKNAME:👑 Owner YUDHA BOT\nORG:Owner\nTITLE:MODS\nitem1.TEL;waid=6283155997772:+62 831-5599-7772\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:flasherdeveloper@gmail.com\nitem3.X-ABLabel:💌 Mail Owner YUDHA BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 28 Juli\nEND:VCARD`
 const tag_own = await conn.sendMessage(m.chat, { contacts: { displayName: wm, contacts: [{ vcard }] }}, { quoted: fakes })
-let caption = `👋 Hai *${name} @${who.split("@")[0]}*, Nih Owner *${conn.user.name}* kak`
-    await conn.sendButton(m.chat, caption, author, null, [['🎀 Sapa Owner', 'Huuu']], m, { quoted: tag_own, mentions: conn.parseMention(caption) })
+let caption = `👋 Hai Kak @${who.split("@")[0]}\n\nItu Nomer Ownerkun Mau Tau Soal Apa Ya?`
+let itu = `Jangan Sungkan Chat Ya Kak`
+    await conn.sendButton(m.chat, caption, itu, null, [['🎀 Sapa Owner', 'Huuu']], m, { quoted: tag_own, mentions: conn.parseMention(caption) })
 }
 if (command == 'whmods2') {
   let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;${author};;;\nFN:${author}\nORG:${author}\nTITLE:\nitem1.TEL;waid=6282127487538:+62 821-2748-7538\nitem1.X-ABLabel:${author}\nX-WA-BIZ-DESCRIPTION:${htjava} Nih pengembang ku kack yg mengaktifkan aq.\nX-WA-BIZ-NAME:${author}\nEND:VCARD`
@@ -24,3 +25,7 @@ handler.tags = ['info']
 handler.command = /^(whmods1|whmods2|whmods3)$/i
 
 export default handler
+
+
+
+//BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner YUDHA;BOT;;Md\nFN:Owner YUDHA BOT\nNICKNAME:👑 Owner YUDHA BOT\nORG:Owner\nTITLE:MODS\nitem1.TEL;waid=6283155997772:+62 831-5599-7772\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:flasherdeveloper@gmail.com\nitem3.X-ABLabel:💌 Mail Owner YUDHA BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 28 Juli\nEND:VCARD
