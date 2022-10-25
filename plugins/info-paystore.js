@@ -14,36 +14,26 @@ let pv = '50'
 let ppm = '70'
 let info = `
 ╭━━━━「 *SEWA* 」
-┊⫹⫺ *Hemat:* _${sh}k/grup (1 minggu)_
-┊⫹⫺ *Normal:* _${sn}k/grup (1 bulan)_
-┊⫹⫺ *Standar:* _${ss}k/grup (2 bulan)_
-┊⫹⫺ *Pro:* _${sp}k/grup (4 bulan)_                                                      
-┊⫹⫺ *Vip:* = _${sv}k/grup (12 bulan)_
+┊⫹⫺ *HEMAT :* _${sh}k/grup (1 minggu)_
+┊⫹⫺ *NORMAL :* _${sn}k/grup (1 bulan)_
+┊⫹⫺ *STANDAR :* _${ss}k/grup (2 bulan)_
+┊⫹⫺ *PRO :* _${sp}k/grup (4 bulan)_                                                      
+┊⫹⫺ *VIP :* = _${sv}k/grup (12 bulan)_
 ╰═┅═━––––––๑
 
 ╭━━━━「 *PREMIUM* 」
-┊⫹⫺ *Hemat:* _${ph}k (1 minggu)_
-┊⫹⫺ *Normal:* _${pn}k (1 bulan)_
-┊⫹⫺ *Pro:* _${pp}k (4 bulan)_
-┊⫹⫺ *Vip:* _${pv}k (8 bulan)_                                               
-┊⫹⫺ *Permanent (jual script bot):* = _${ppm}k (Unlimited)_
+┊⫹⫺ *HEMAT :* _${ph}k (1 minggu)_
+┊⫹⫺ *NORMAL :* _${pn}k (1 bulan)_
+┊⫹⫺ *PRO :* _${pp}k (4 bulan)_
+┊⫹⫺ *VIP :* _${pv}k (8 bulan)_                                               
+┊⫹⫺ *PERMANENT (Jual Script BOT):* = _${ppm}k (Unlimited)_
 ╰═┅═━––––––๑
 
 *⫹⫺ PAYMENT:*
-• *Pulsa Telkomsel:* [${ppulsa}]
-• *Dana:* [${pdana}]
-• *Gopay:* [${pgopay}]
-• *Ovo:* [${povo}]
-• *Link Aja:* [${plinkaja}]
+• *DANA :* [${pdana}]
+• *GOPAY :* [${pgopay}]
+• *OVO :* [${povo}]
 
-–––––– *🐾 Kebijakan* ––––––
-🗣️: Kak, Kok harganya mahal banget?
-💬: Mau tawar menawar? boleh, silahkan chat owner aja
-
-🗣️: Scam ga nih kak?
-💬: Enggalah, Owner 100% Tepati janji #STAYHALAL
-
-▌│█║▌║▌║║▌║▌║█│▌
 `
 const sections = [
    {
