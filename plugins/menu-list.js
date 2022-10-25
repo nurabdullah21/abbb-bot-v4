@@ -209,20 +209,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
     let mpt = clockString(_mpt)
       const sections = [
    {
-	title: `${htki} MAIN ${htka}`,
-	rows: [
-	    {title: `⚡ SPEED BOT`, rowId: ".speed", description: "Menampilkan kecepatan respon BOT"},
-	    {title: `💌 OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
-	    {title: `📔 SCRIPT BOT`, rowId: ".sc", description: `Source Code ${namebot}`},
-	]
-    },{
-	title: `${htki} SUPPORT ${htka}`,
-	rows: [
-	    {title: `🔖 SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa BOT"},
-	    {title: `🌟 BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga premium"},
-	    {title: `💹 DONASI`, rowId: ".donasi", description: 'Support BOT agar lebih fast respon'},
-	]
-	},{
 	title: `${htki} MENU ${htka}`,
 	rows: [
 	    {title: `💬 SEMUA COMMAND`, rowId: ".? all", description: "Menampilkan Semua command BOT"},
@@ -254,6 +240,20 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 	{title: `❓ TIDAK ADA KATEGORI`, rowId: ".? nocategory", description: "Fitur tanpa kategory!"},
 	]
   },
+	      {
+	title: `${htki} MAIN ${htka}`,
+	rows: [
+	    {title: `⚡ SPEED BOT`, rowId: ".speed", description: "Menampilkan kecepatan respon BOT"},
+	    {title: `💌 OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
+	]
+    },{
+	title: `${htki} SUPPORT ${htka}`,
+	rows: [
+	    {title: `🔖 SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa BOT"},
+	    {title: `🌟 BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga premium"},
+	    {title: `💹 DONASI`, rowId: ".donasi", description: 'Support BOT agar lebih fast respon'},
+	]
+	},
 ]
 
 let usrs = db.data.users[m.sender]
