@@ -1350,7 +1350,7 @@ export async function groupsUpdate(groupsUpdate) {
             if (groupUpdate.restrict == true) text = (chats.sRestrictOn || this.sRestrictOn || conn.sRestrictOn || '*Group has been all participants!*')
             if (groupUpdate.restrict == false) text = (chats.sRestrictOff || this.sRestrictOff || conn.sRestrictOff || '*Group has been only admin!*')
             if (!text) continue
-            this.sendButton(id, text.trim(), author, '🔖 Matikan Fitur', '.off detect', 0, 0)
+            this.sendButton(id, text.trim(), author, 0, '🔖 Matikan Fitur', '.off detect', 0, 0)
     }
 }
 
