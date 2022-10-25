@@ -1,4 +1,4 @@
-let { MessageType } = (await import('@adiwajshing/baileys')).default
+/*let { MessageType } = (await import('@adiwajshing/baileys')).default
 
 let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
   let type = (args[0] || '').toLowerCase()
@@ -106,4 +106,4 @@ handler.help = ['owner', 'creator']
 handler.tags = ['main', 'info']
 handler.command = /^(owner|creator)/i
 
-export default handler
+export default handler*/
