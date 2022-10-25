@@ -109,7 +109,7 @@ ${cmenua}
 {'buttonId':'.donasi','buttonText':{'displayText':'ᴅᴏɴᴀsɪ'},'type':1}
 ],
 'headerType':6}
-    await conn.sendMessage(m.chat,cap, { quoted:m})
+    await conn.sendMessage(m.chat,buttonMessage, { quoted:m})
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <nama>.<umur>')
 handler.tags = ['xp']
