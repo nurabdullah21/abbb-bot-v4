@@ -1,31 +1,31 @@
 let handler = async (m, { conn }) => {
 	//-----PRICE
 //sewa
-let sh = '5'
-let sn = '15'
-let ss = '30'
-let sp = '35'
-let sv = '65'
+let sh = '5000'
+let sn = '15.000'
+let ss = '30.000'
+let sp = '35.000'
+let sv = '65.000'
 //premium
-let ph = '5'
-let pn = '20'
-let pp = '40'
-let pv = '50'
-let ppm = '70'
+let ph = '5000'
+let pn = '20.000'
+let pp = '40.000'
+let pv = '50.000'
+let ppm = '70.000'
 let info = `
 ╭━━━━「 *SEWA* 」
-┊⫹⫺ *HEMAT :* _${sh}k/grup (1 minggu)_
-┊⫹⫺ *NORMAL :* _${sn}k/grup (1 bulan)_
-┊⫹⫺ *STANDAR :* _${ss}k/grup (2 bulan)_
-┊⫹⫺ *PRO :* _${sp}k/grup (4 bulan)_                                                      
-┊⫹⫺ *VIP :* = _${sv}k/grup (12 bulan)_
+┊⫹⫺ *HEMAT :* _${sh}k/grup (1 Minggu)_
+┊⫹⫺ *NORMAL :* _${sn}k/grup (1 Mulan)_
+┊⫹⫺ *STANDAR :* _${ss}k/grup (2 Bulan)_
+┊⫹⫺ *PRO :* _${sp}k/grup (4 Bulan)_                                                      
+┊⫹⫺ *VIP :* = _${sv}k/grup (12 Bulan)_
 ╰═┅═━––––––๑
 
 ╭━━━━「 *PREMIUM* 」
-┊⫹⫺ *HEMAT :* _${ph}k (1 minggu)_
-┊⫹⫺ *NORMAL :* _${pn}k (1 bulan)_
-┊⫹⫺ *PRO :* _${pp}k (4 bulan)_
-┊⫹⫺ *VIP :* _${pv}k (8 bulan)_                                               
+┊⫹⫺ *HEMAT :* _${ph}k (1 Minggu)_
+┊⫹⫺ *NORMAL :* _${pn}k (1 Bulan)_
+┊⫹⫺ *PRO :* _${pp}k (4 Bulan)_
+┊⫹⫺ *VIP :* _${pv}k (8 Bulan)_                                               
 ┊⫹⫺ *PERMANENT (Jual Script BOT):* = _${ppm}k (Unlimited)_
 ╰═┅═━––––––๑
 
@@ -39,20 +39,20 @@ const sections = [
    {
 	title: `${htjava} SEWA ✦-------`,
 	rows: [
-	    {title: "🔖 HEMAT", rowId: '.order *Paket:* HEMAT • Sewa', description: 'PRICE: ' + sh + 'k (1 minggu)' },
-	    {title: "🔖 NORMAL", rowId: '.order *Paket:* NORMAL • Sewa', description: 'PRICE: ' + sn + 'k (1 bulan)' },
-	{title: "🔖 STANDAR", rowId: '.order *Paket:* STANDAR • Sewa', description: 'PRICE: ' + ss + 'k (2 bulan)' },
-	{title: "🔖 PRO", rowId: '.order *Paket:* PRO • Sewa', description: 'PRICE: ' + sp + 'k (4 bulan)' },
-	{title: "🔖 VIP", rowId: '.order *Paket:* VIP • Sewa', description: 'PRICE: ' + sv + 'k (12 bulan)' },
+	    {title: "🔖 HEMAT", rowId: '.order *Paket:* HEMAT • Sewa', description: 'PRICE: ' + sh + 'k (1 Minggu)' },
+	    {title: "🔖 NORMAL", rowId: '.order *Paket:* NORMAL • Sewa', description: 'PRICE: ' + sn + 'k (1 Bulan)' },
+	{title: "🔖 STANDAR", rowId: '.order *Paket:* STANDAR • Sewa', description: 'PRICE: ' + ss + 'k (2 Bulan)' },
+	{title: "🔖 PRO", rowId: '.order *Paket:* PRO • Sewa', description: 'PRICE: ' + sp + 'k (4 Bulan)' },
+	{title: "🔖 VIP", rowId: '.order *Paket:* VIP • Sewa', description: 'PRICE: ' + sv + 'k (12 Bulan)' },
 	]
     }, {
     title: `${htjava} PREMIUM ✦-------`,
 	rows: [
-	    {title: "🌟 HEMAT", rowId: '.order *Paket:* HEMAT • Premium', description: 'PRICE: ' + ph + 'k (1 minggu)' },
-	    {title: "🌟 NORMAL", rowId: '.order *Paket:* NORMAL • Premium', description: 'PRICE: ' + pn + 'k (1 bulan)' },
-	{title: "🌟 PRO", rowId: '.order *Paket:* PRO • Premium', description: 'PRICE: ' + pp + 'k (4 bulan)' },
-	{title: "🌟 VIP", rowId: '.order *Paket:* VIP • Premium', description: 'PRICE: ' + pv + 'k (8 bulan)' },
-	{title: "🌟 PERMANENT (jual script bot)", rowId: '.order *Paket:* PERMANENT • Premium (jual script bot)', description: 'PRICE: ' + ppm + 'k (UNLIMITED)' },
+	    {title: "🌟 HEMAT", rowId: '.order *Paket:* HEMAT • Premium', description: 'PRICE: ' + ph + 'k (1 Minggu)' },
+	    {title: "🌟 NORMAL", rowId: '.order *Paket:* NORMAL • Premium', description: 'PRICE: ' + pn + 'k (1 Bulan)' },
+	{title: "🌟 PRO", rowId: '.order *Paket:* PRO • Premium', description: 'PRICE: ' + pp + 'k (4 Bulan)' },
+	{title: "🌟 VIP", rowId: '.order *Paket:* VIP • Premium', description: 'PRICE: ' + pv + 'k (8 Bulan)' },
+	{title: "🌟 PERMANENT (jual script bot)", rowId: '.order *Paket:* PERMANENT • Premium (Jual Script Bot)', description: 'PRICE: ' + ppm + 'k (UNLIMITED)' },
 	]
     },
 ]
