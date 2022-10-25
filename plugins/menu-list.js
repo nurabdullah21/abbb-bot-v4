@@ -241,19 +241,13 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 	]
   },
 	      {
-	title: `${htki} MAIN ${htka}`,
-	rows: [
-	    {title: `⚡ SPEED BOT`, rowId: ".speed", description: "Menampilkan kecepatan respon BOT"},
-	    {title: `💌 OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
-	]
-    },{
 	title: `${htki} SUPPORT ${htka}`,
 	rows: [
-	    {title: `🔖 SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa BOT"},
-	    {title: `🌟 BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga premium"},
-	    {title: `💹 DONASI`, rowId: ".donasi", description: 'Support BOT agar lebih fast respon'},
+	    {title: `⚡ SPEED BOT`, rowId: ".speed", description: "Menampilkan Kecepatan Respon BOT"},
+	    {title: `💌 OWNER BOT`, rowId: ".owner", description: "Menampilkan List Owner BOT"},
+		{title: `🔖 SEWA`, rowId: ".sewa", description: "Menampilkan List HHarga Sewa BOT"},
 	]
-	},
+    },
 ]
 
 let usrs = db.data.users[m.sender]
