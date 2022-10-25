@@ -82,34 +82,10 @@ ${cmenub} *ᴀɢᴇ:* ${age} ʏᴇᴀʀs
 ${cmenub} *sɴ:* ${sn}
 ${cmenuf}
 
-ᴅᴀᴛᴀ ᴜsᴇʀ ʏᴀɴɢ ᴛᴇʀsɪᴍᴘᴀɴ ᴅɪᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ, ᴅɪᴊᴀᴍɪɴ ᴀᴍᴀɴ ᴛᴀɴᴘᴀ ᴛᴇʀsʜᴀʀᴇ (. ❛ ᴗ ❛.)
+ᴅᴀᴛᴀ ᴜsᴇʀ ʏᴀɴɢ ᴛᴇʀsɪᴍᴘᴀɴ ᴅɪᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ, ᴅɪᴊᴀᴍɪɴ ᴀᴍᴀɴ ᴛᴀɴᴘᴀ ᴛᴇʀsʜᴀʀᴇ
 ${cmenua}
 `
-  let buttonMessage= {
-'document':{'url':sgc},
-'mimetype':mim_.getRandom(),
-'fileName':htjava + ' ʀᴇɢɪsᴛᴇʀ ' + htjava,
-'fileLength':fsizedoc,
-'pageCount':fpagedoc,
-'contextInfo':{
-'forwardingScore':555,
-'isForwarded':true,
-'externalAdReply':{
-'mediaUrl':ngelink_.getRandom(),
-'mediaType':2,
-'previewType':'pdf',
-'title':author,
-'body':bottime,
-'thumbnail':await(await fetch('https://telegra.ph/file/4a7e5f18efaadec18a7a0.jpg')).buffer(),
-'sourceUrl':sgc}},
-'caption':cap,
-'footer':wm,
-'buttons':[
-{'buttonId':'.menu','buttonText':{'displayText':'ᴍᴇɴᴜ'},'type':1},
-{'buttonId':'.donasi','buttonText':{'displayText':'ᴅᴏɴᴀsɪ'},'type':1}
-],
-'headerType':6}
-    await conn.sendMessage(m.chat,buttonMessage, { quoted:m})
+  await conn.sendMessage(m.chat, cap, { quoted:m})
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <nama>.<umur>')
 handler.tags = ['xp']
