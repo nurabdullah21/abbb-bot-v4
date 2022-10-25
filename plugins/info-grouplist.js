@@ -1,4 +1,4 @@
-let handler = async (m, { conn, isOwner }) => {
+/*let handler = async (m, { conn, isOwner }) => {
 	let groups = Object.values(await conn.groupFetchAllParticipating())
 	
 	let str = Object.keys(groups).map((i, index) => {
@@ -23,3 +23,4 @@ handler.tags = ['group']
 handler.command = /^((gro?ups?list)|(listgro?ups?)|(listgc))$/i
 
 export default handler
+*/
