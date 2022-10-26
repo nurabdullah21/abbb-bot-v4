@@ -6,7 +6,7 @@ let name = await conn.getName(who)
 
 
 if (command == 'owner') {
- let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner YUDHA;BOT;;Md\nFN:Owner YUDHA BOT\nNICKNAME:👑 Owner YUDHA BOT\nORG:Owner\nTITLE:MODS\nitem1.TEL;waid=6283155997772:+62 831-5599-7772\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:flasherdeveloper@gmail.com\nitem3.X-ABLabel:💌 Mail Owner YUDHA BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 28 Juli\nEND:VCARD`
+ let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner ABBB;BOT;;Md\nFN:Owner ABBB BOT\nNICKNAME:👑 Owner ABBB BOT\nORG:Owner\nTITLE:MODS\nitem1.TEL;waid=6285156858655:+62 851-5685-8655\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:flasherdeveloper@gmail.com\nitem3.X-ABLabel:💌 Mail Owner ABBB BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 28 Juli\nEND:VCARD`
 const tag_own = await conn.sendMessage(m.chat, { contacts: { displayName: wm, contacts: [{ vcard }] }}, { quoted: 0 })
 let caption = `👋 Hai Kak @${who.split("@")[0]}\n\nItu Nomer Ownerku, Mau Tau Soal Apa Ya?`
 let itu = `Jangan Sungkan Chat Ya Kak`
@@ -28,4 +28,4 @@ export default handler
 
 
 
-//BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner YUDHA;BOT;;Md\nFN:Owner YUDHA BOT\nNICKNAME:👑 Owner YUDHA BOT\nORG:Owner\nTITLE:MODS\nitem1.TEL;waid=6283155997772:+62 831-5599-7772\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:flasherdeveloper@gmail.com\nitem3.X-ABLabel:💌 Mail Owner YUDHA BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 28 Juli\nEND:VCARD
+//BEGIN:VCARD\nVERSION:3.0\nN:WhatsApp;Saya Owner ABBB;BOT;;Md\nFN:Owner ABBB BOT\nNICKNAME:👑 Owner YUDHA BOT\nORG:Owner\nTITLE:MODS\nitem1.TEL;waid=6285156858655:+62 851-5685-8655\nitem1.X-ABLabel:📞 Nomor Owner\nitem2.URL:https://www.youtube.com\nitem2.X-ABLabel:💬 More\nitem3.EMAIL;type=INTERNET:flasherdeveloper@gmail.com\nitem3.X-ABLabel:💌 Mail Owner ABBB BOT\nitem4.ADR:;;🇮🇩 Indonesia;;;;\nitem4.X-ABADR:💬 More\nitem4.X-ABLabel:📍 Lokasi Saya\nBDAY;value=date:🔖 28 Juli\nEND:VCARD
