@@ -37,19 +37,19 @@ global.sfb = 'https://www.facebook.com/' // facebook
 global.syt = 'https://www.youtube.com/' // my youtube channel "kalau ada yt ke 2 tarok link nya disini"
 
 /*============== PAYMENT ==============*/
-global.pdana = '083155997772' //dana
-global.povo = '083155997772' //ovo
-global.pgopay = '083155997772' //gopay
-global.plinkaja = '083155997772' //link aja
-global.ppulsa = '083155997772' //telkomsel
-global.ppulsa2 = '083155997772' // kalau ada kartu lain isi aja
+global.pdana = '6285156858655' //dana
+global.povo = '6285156858655' //ovo
+global.pgopay = '6285156858655' //gopay
+global.plinkaja = '6285156858655' //link aja
+global.ppulsa = '6285156858655' //telkomsel
+global.ppulsa2 = '6285156858655' // kalau ada kartu lain isi aja
 global.psaweria = 'https://saweria.co/'
 
 /*============== NOMOR ==============*/
 global.nomorbot = '6285723580038'
-global.nomorown = '6283155997772'
-global.namebot = 'YUDHA BOT'
-global.nameown = 'Yudha Permana'
+global.nomorown = '6285156858655'
+global.namebot = 'ABBB BOT'
+global.nameown = 'Muhammad Nur Abdullah'
 
 /*============== Github Thanks To ==============*/
 global.namagithub = 'Nama Github Belum Diisi' // nama github lu
@@ -64,7 +64,7 @@ global.lolkey = 'e54205a4ca2caa368cc067bb' // PUNYA WAHID  8e66d0934cf741bfd2182
 
 /*============== STAFF ==============*/
 global.owner = [
-  ['6283155997772', 'WH MODS DEV', true],
+  ['6285156858655', 'ABBB BOT', true],
   ['-', 'ISI KALAU ADA', true],
   ['-', 'ISI KALAU ADA', true],
   ['-', 'ISI KALAU ADA', true],
@@ -117,14 +117,14 @@ global.APIKeys = { // APIKey Here
 // Kata APIKEY itu isi dengan apikey lu sendiri, dengan beli ke website itu
 
 /*============== WATERMARK ==============*/
-global.wm = '「 YUDHA BOT 」' //Main Watermark
-global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘WH-MODS-BOT-V1 ˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
-global.wm3 = '⫹⫺ WH-MODS-BOT-V1 '
+global.wm = '「 ABBB BOT 」' //Main Watermark
+global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘ABBB BOT ˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
+global.wm3 = '⫹⫺ ABBB BOT '
 global.botdate = `⫹⫺ DATE: ${week} ${date}\n⫹⫺ 𝗧𝗶𝗺𝗲: ${wktuwib}`
 global.bottime = `T I M E : ${wktuwib}`
-global.titlebot = `WhatsApp Bot | By YUDHA BOT`
+global.titlebot = `WhatsApp Bot | By ABBB BOT`
 global.packname = '☂︎ ᴄʀᴇᴀᴛᴇᴅ ʙʏ'
-global.author = '「YUDHA BOT」'
+global.author = '「ABBB BOT」'
 
 /*Fake*/
 global.fsizedoc = '1'.repeat(10)
