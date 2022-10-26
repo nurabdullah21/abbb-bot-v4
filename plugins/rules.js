@@ -19,7 +19,7 @@ Sanksi: *SOFT BLOCK*
 
 Jika Sudah Dipahami Rulesnya, Silakan Ketik *.menu* Untuk Memulai!
 
-*── 「 YUDHA BOT 」 ──*`
+*── 「 ABBB BOT 」 ──*`
 let wibu = `https://i.ibb.co/P5BBzbf/286637238-392674839545088-948545114162206238-n.jpg` 
 let thumb = await(await fetch(wibu)).buffer()
 let imgnya = 'https://telegra.ph/file/73dc6b92751ec9608c10b.jpg'
