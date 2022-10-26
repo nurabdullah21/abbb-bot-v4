@@ -253,7 +253,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 let usrs = db.data.users[m.sender]
 let tek = `${ucapan()}
 Hai Kak @${m.sender.split`@`[0]}
-Pilih Menu YUDHA BOT Disini`
+Pilih Menu ABBB BOT Disini`
 const listMessage = {
   text: tek,
   footer: ``,
