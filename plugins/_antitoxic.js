@@ -14,7 +14,7 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
         await conn.sendButton(m.chat, `*Kata Tak Pantas Terdeteksi!*
         
 _“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam”_
-_(HR. al-Bukhari dan Muslim)_.${isBotAdmin ? '' : '\n\n_Bot bukan Admin_'}`, author, ['Matikan Fitur', '/disable antitoxic'], m)
+_(HR. al-Bukhari dan Muslim)_.${isBotAdmin ? '' : '\n\n_Bot bukan Admin_'}`, author, ['Matikan Fitur', '.off antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
             // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     global.db.data.users[m.sender].warn += 1
