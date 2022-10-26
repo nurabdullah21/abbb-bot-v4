@@ -1,4 +1,4 @@
-/*let handler = async (m, { conn, isOwner }) => {
+let handler = async (m, { conn, isOwner }) => {
 	let groups = Object.values(await conn.groupFetchAllParticipating())
 	
 	let str = Object.keys(groups).map((i, index) => {
@@ -18,9 +18,9 @@ ${dmenuf}`.trim()
     await conn.sendButtonImg(m.chat, thumb, str, author, 'ʙᴀᴄᴋ ᴛᴏ ᴍᴇɴᴜ', '.menu', 0, 0)
 }
 
+handler.owner = true
 handler.help = ['groups', 'grouplist']
 handler.tags = ['group']
 handler.command = /^((gro?ups?list)|(listgro?ups?)|(listgc))$/i
 
 export default handler
-*/
