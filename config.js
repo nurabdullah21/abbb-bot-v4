@@ -37,16 +37,16 @@ global.sfb = 'https://www.facebook.com/' // facebook
 global.syt = 'https://www.youtube.com/' // my youtube channel "kalau ada yt ke 2 tarok link nya disini"
 
 /*============== PAYMENT ==============*/
-global.pdana = '6285156858655' //dana
-global.povo = '6285156858655' //ovo
-global.pgopay = '6285156858655' //gopay
-global.plinkaja = '6285156858655' //link aja
-global.ppulsa = '6285156858655' //telkomsel
-global.ppulsa2 = '6285156858655' // kalau ada kartu lain isi aja
-global.psaweria = 'https://saweria.co/'
+global.pdana = '6283178385539' //dana
+global.povo = '6283178385539' //ovo
+global.pgopay = '6283178385539' //gopay
+global.plinkaja = '-' //link aja
+global.ppulsa = '-' //tri
+global.ppulsa2 = '-' // kalau ada kartu lain isi aja
+global.psaweria = '-'
 
 /*============== NOMOR ==============*/
-global.nomorbot = '6285723580038'
+global.nomorbot = '6285846161253'
 global.nomorown = '6285156858655'
 global.namebot = 'ABBB BOT'
 global.nameown = 'Muhammad Nur Abdullah'
