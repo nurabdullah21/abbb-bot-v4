@@ -903,7 +903,7 @@ export async function handler(chatUpdate) {
                         antiDelete: false,
                         antiLink: false,
                         antiSticker: false,
-                        antiToxic: true,
+                        antiToxic: false,
                         detect: true,
                         delete: true,
                         expired: 0,
